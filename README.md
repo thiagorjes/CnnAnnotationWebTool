@@ -1,7 +1,8 @@
 Para usar esta ferramenta apenas instale o PHP e o Apache2 e copie todo o conteudo para o diretorio raiz do apache.
 Se nao souber como fazê-lo... instale o phpmyadmin na sua distribuicao linux e copie os arquivos para /var/www/html
 
-o arquivo lista.php contem as listas de imagens e labels 
+o arquivo lista.php contem as listas de imagens e labels .. leia o arquivo para entender melhor o funcionamento.
+2 arquivos "txt" de exemplo estao disponiveis
 o arquivo classes.php contem o array de classes desejadas com os nomes e estilos para exibicao
 nao esqueca de permitir acesso de gravacao em seus arquivos para o usuario www-data
 
