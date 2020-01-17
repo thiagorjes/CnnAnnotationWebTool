@@ -1,21 +1,18 @@
-<?php
-$imagens=
-["/images/cologne_000134_000019_leftImg8bit.png",
-"/images/frankfurt_000001_050686_leftImg8bit.png",
-"/images/hanover_000000_038927_leftImg8bit.png",
-"/images/munster_000108_000019_leftImg8bit.png",
-"/images/ulm_000044_000019_leftImg8bit.png",
-"/images/hanover_000000_005970_leftImg8bit.png",
-"/images/munster_000001_000019_leftImg8bit.png",
-"/images/ulm_000032_000019_leftImg8bit.png"];
+<?php 
 
-$labels=
-["/labels/cologne_000134_000019_leftImg8bit.txt",
-"/labels/frankfurt_000001_050686_leftImg8bit.txt",
-"/labels/hanover_000000_038927_leftImg8bit.txt",
-"/labels/munster_000108_000019_leftImg8bit.txt",
-"/labels/ulm_000044_000019_leftImg8bit.txt",
-"/labels/hanover_000000_005970_leftImg8bit.txt",
-"/labels/munster_000001_000019_leftImg8bit.txt",
-"/labels/ulm_000032_000019_leftImg8bit.txt"
-];
+function Imagens($id)
+{
+  $file = new SplFileObject("imagens.txt");
+  $file->seek($id);
+  return trim(preg_replace('/\s\s+/', ' ', $file->current()));
+}
+
+function Labels($id)
+{
+  $file = new SplFileObject("labels.txt");
+  $file->seek($id);
+  return trim(preg_replace('/\s\s+/', ' ', $file->current()));
+}
+
+
+?>
