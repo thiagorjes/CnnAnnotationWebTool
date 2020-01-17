@@ -1,7 +1,7 @@
 <?php
 $dimensao=1000;
 //lista de imagens
-include_once("lista2.php");
+include_once("lista.php");
 //lista de classes de interesses
 include_once("classes.php");
 
@@ -14,22 +14,22 @@ if(isset($_POST['idx'])){
 if(isset($_POST['comando']) && $_POST['comando']=="volta"){
   $idx--;
   $idx=($idx<0?0:$idx);
-  $file = $imagens[$idx];
+  $file = Imagens($idx);
   list($img_w, $img_h, $type, $attr) = getimagesize("/var/www/html/".$file);
   $ratio=($img_w/$img_h);
   if($img_w>$img_h){
-    $w=$dimensao."px";
-    $h=($dimensao/($ratio))+"px";
+    $w=$dimensao;
+    $h=($dimensao/($ratio));
   }
   else{
-    $h=$dimensao."px";
-    $w=($dimensao*($ratio))+"px";
+    $h=$dimensao;
+    $w=($dimensao*($ratio));
   }
-  $boxes = $labels[$idx];
+  $boxes = Labels($idx);
 }
 else if( isset($_POST['comando']) && $_POST['comando']=="vai"){
   $idx++;
-  $file = $imagens[$idx];
+  $file = Imagens($idx);
   list($img_w, $img_h, $type, $attr) = getimagesize("/var/www/html/".$file);
   $ratio=($img_w/$img_h);
   if($img_w>$img_h){
@@ -37,24 +37,24 @@ else if( isset($_POST['comando']) && $_POST['comando']=="vai"){
     $h=($dimensao/($ratio))+"px";
   }
   else{
-    $h=$dimensao."px";
-    $w=($dimensao*($ratio))+"px";
+    $h=$dimensao;
+    $w=($dimensao*($ratio));
   }
-  $boxes = $labels[$idx];
+  $boxes = Labels($idx);
 }
 else { 
-  $file = $imagens[$idx];
+  $file = Imagens($idx);
   list($img_w, $img_h, $type, $attr) = getimagesize("/var/www/html/".$file);
   $ratio=($img_w/$img_h);
   if($img_w>$img_h){
-    $w=$dimensao."px";
-    $h=($dimensao/($ratio))+"px";
+    $w=$dimensao;
+    $h=($dimensao/($ratio));
   }
   else{
-    $h=$dimensao."px";
-    $w=($dimensao*($ratio))+"px";
+    $h=$dimensao;
+    $w=($dimensao*($ratio));
   }
-  $boxes = $labels[$idx];
+  $boxes = Labels($idx);
   if($_POST['novos']=="novidades")
   {
     $fp = fopen("/var/www/html".$boxes, 'w');
@@ -72,6 +72,7 @@ else {
 
 
 $linhas = file("http://localhost/".$boxes);
+$linhas = array_unique($linhas);
 
 ?>
 <html>
@@ -107,8 +108,8 @@ $linhas = file("http://localhost/".$boxes);
       }
       .imagem{
         border:1px solid black;
-        width:<?php echo $dimensao;?>;
-        height:<?php echo $dimensao;?>;
+        width:<?php echo $dimensao;?>px;
+        height:<?php echo $dimensao;?>px;
       }
       img {
         width: <?php echo "$w";?>px;
