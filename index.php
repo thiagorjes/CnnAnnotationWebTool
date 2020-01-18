@@ -78,6 +78,24 @@ $linhas = array_unique($linhas);
 <html>
   <head>
     <style>
+      .vlinha{
+        width:0px;
+        height:<?php echo $dimensao;?>px;
+        top:0px;
+        left:0px;
+        position: absolute;
+        background: transparent;
+        border: 1px solid black;
+      }
+      .hlinha{
+        height:0px;
+        width:<?php echo $dimensao;?>px;
+        left:0px;
+        top:0px;
+        position: absolute;
+        background: transparent;
+        border: 1px solid black;
+      }
       .eliminar {
         margin: -13px 0px;
         width: 24px;
@@ -148,7 +166,9 @@ $linhas = array_unique($linhas);
     }
   ?> 
     <!-- <div onclick="showCoords(event)" style="background: transparent; top:0px; left:0px; width:<?php echo $img_w;?>px;height:<?php echo $img_h;?>px;position:absolute;z-index:999999;" ></div> -->
-    <div class="clicavel" onclick="showCoords(event)" ></div>
+    <div class="clicavel" onclick="showCoords(event)" onmousemove="linhas()"></div>
+    <div class="vlinha"></div>
+    <div class="hlinha"></div>
     <div class="imagem" id="imagem" >
       <img id='foto' src='<?php echo $file; ?>' />
     </div>  
@@ -201,6 +221,12 @@ $linhas = array_unique($linhas);
   </body>
 
   <script>   
+    function linhas(){
+      var vlinha=document.querySelectorAll('.vlinha')
+      var hlinha=document.querySelectorAll('.hlinha')
+      vlinha.forEach( (e)=>{e.style['left']=event.clientX-1})
+      hlinha.forEach( (e)=>{e.style['top']=event.clientY-1})
+    }
     function eliminar(id){
       ativa(id)
       document.getElementById('box_width_'+id).value=0
