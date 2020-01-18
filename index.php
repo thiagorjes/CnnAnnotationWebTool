@@ -221,6 +221,20 @@ $linhas = array_unique($linhas);
   </body>
 
   <script>   
+    function checkKey(e) {
+      var event = window.event ? window.event : e;
+      switch (event.keyCode){
+        case 37:
+          document.getElementById('idx').value=(document.getElementById('idx').value>1?parseInt(document.getElementById('idx').value)-1:0);
+          document.getElementById('formulario').submit()
+          break;
+        case 39:
+          document.getElementById('idx').value=parseInt(document.getElementById('idx').value)+1;
+          document.getElementById('formulario').submit()
+          break;
+      }
+    }
+    document.onkeydown = checkKey;
     function linhas(){
       var vlinha=document.querySelectorAll('.vlinha')
       var hlinha=document.querySelectorAll('.hlinha')
