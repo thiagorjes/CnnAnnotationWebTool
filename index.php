@@ -4,7 +4,7 @@ $dimensao=1000;
 include_once("lista.php");
 //lista de classes de interesses
 include_once("classes.php");
-
+$classe_selecionada = (isset($_POST['add_box'])?$_POST['add_box']:0);
 $idx=0;
 
 if(isset($_POST['idx'])){
@@ -159,10 +159,10 @@ $linhas = array_unique($linhas);
         <input type="hidden" value='<?php echo $idx; ?>' name="idx" id="idx" />
         <input type="submit" value="volta" name="comando" id="anterior"></input>
         <input type="submit" value="vai" name="comando" id="proxima"></input>
-        <select name="add_box">
+        <select name="add_box" id="add_box">
         <?php 
           foreach($classes as $key=>$value){
-            echo "<option onclick=\"addbox($key)\" value=\"".$value[0]."\"> add ".$value[0]."</option>";
+            echo "<option  value=\"".$key."\" ".($key==$classe_selecionada?"selected":"")."  > add ".$value[0]."</option>";
           }
         ?>
         </select>
@@ -217,8 +217,12 @@ $linhas = array_unique($linhas);
       elemento.classList.remove('highlighted');
     }
     function showCoords(event){
-      var x = event.clientX;
-      var y = event.clientY;
+      if(document.getElementById('ativa').value=='')
+      {
+        addbox(document.getElementById('add_box').value)   
+      }
+      var x = event.clientX-1;
+      var y = event.clientY-1;
       if( document.getElementById('ativa').value > 0){
         idx = document.getElementById('ativa').value
         if(document.getElementById('hbox_'+idx).value.split(" ").length - 1 == 3){
