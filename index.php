@@ -173,7 +173,7 @@ $linhas = array_unique($linhas);
       <img id='foto' src='<?php echo $file; ?>' />
     </div>  
     <div class="dados" > 
-      <input type="text" value="" id="ativa"></input>
+      <input type="text" value="" id="ativa"></input> <?php echo "[".$idx."]:".basename($file);?>
       <form action='index.php' method='post' id='formulario'>
         <input type="hidden" value='false' name="novos" id="novos" />
         <input type="hidden" value='<?php echo $idx; ?>' name="idx" id="idx" />
