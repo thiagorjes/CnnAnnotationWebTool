@@ -223,6 +223,7 @@ $linhas = array_unique($linhas);
   <script>   
     function checkKey(e) {
       var event = window.event ? window.event : e;
+      console.log(event.keyCode)
       switch (event.keyCode){
         case 37:
           document.getElementById('idx').value=(document.getElementById('idx').value>1?parseInt(document.getElementById('idx').value)-1:0);
@@ -240,6 +241,17 @@ $linhas = array_unique($linhas);
             eliminar(indice)
           })
           break;
+        case 48:
+          document.getElementById('add_box').selectedIndex = 0
+          break;
+        <?php 
+        foreach($classes as $key=>$value){
+          $valor = 48+$key;
+          echo "case $valor:
+            document.getElementById('add_box').selectedIndex = $key
+            break;";
+        }
+        ?>
       }
     }
     document.onkeydown = checkKey;
