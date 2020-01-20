@@ -176,7 +176,7 @@ $linhas = array_unique($linhas);
       <input type="text" value="" id="ativa"></input> <?php echo "[".$idx."]:".basename($file);?>
       <form action='index.php' method='post' id='formulario'>
         <input type="hidden" value='false' name="novos" id="novos" />
-        <input type="hidden" value='<?php echo $idx; ?>' name="idx" id="idx" />
+        <input type="text" value='<?php echo $idx; ?>' name="idx" id="idx" />
         <input type="submit" value="volta" name="comando" id="anterior"></input>
         <input type="submit" value="vai" name="comando" id="proxima"></input>
         <select name="add_box" id="add_box">
@@ -231,6 +231,14 @@ $linhas = array_unique($linhas);
         case 39:
           document.getElementById('idx').value=parseInt(document.getElementById('idx').value)+1;
           document.getElementById('formulario').submit()
+          break;
+          
+        case 46:
+          var selecionado = document.querySelectorAll('.highlighted')
+          selecionado.forEach((e)=>{
+            let indice = e.id.substring(4)
+            eliminar(indice)
+          })
           break;
       }
     }
