@@ -90,7 +90,7 @@ natsort($linhas);
       }
       .hlinha{
         height:0px;
-        width:<?php echo $dimensao;?>px;
+        width:<?php echo $dimensao+10;?>px;
         left:0px;
         top:0px;
         position: absolute;
@@ -98,7 +98,7 @@ natsort($linhas);
         border: 1px solid black;
       }
       .eliminar {
-        margin: -13px 0px;
+        margin: 0px 0px;
         width: 24px;
         height: 23px;
         background-color: red;
@@ -122,10 +122,11 @@ natsort($linhas);
         left:0px;
         position:absolute;
         z-index:999999;
-        width:<?php echo $dimensao;?>px;
-        height:<?php echo $dimensao;?>px;
+        width:<?php echo $dimensao+10;?>px;
+        height:<?php echo $dimensao+10;?>px;
       }
       .imagem{
+        padding: 5px 5px;
         border:1px solid black;
         width:<?php echo $dimensao;?>px;
         height:<?php echo $dimensao;?>px;
@@ -163,7 +164,7 @@ natsort($linhas);
       $width = floatval($width)*floatval($w);
       $height = floatval($height)*floatval($h);
       echo 
-      "<div id='box_$var' class='box class_".$classes[$class_id][0]."' style='position:absolute; top:".$top."px; left:".$left."px;width:".$width."px;height:".$height."px;'></div>";
+      "<div id='box_$var' class='box class_".$classes[$class_id][0]."' style='position:absolute; top:".($top+5)."px; left:".($left+5)."px;width:".$width."px;height:".$height."px;'></div>";
     }
   ?> 
     <!-- <div onclick="showCoords(event)" style="background: transparent; top:0px; left:0px; width:<?php echo $img_w;?>px;height:<?php echo $img_h;?>px;position:absolute;z-index:999999;" ></div> -->
@@ -282,8 +283,10 @@ natsort($linhas);
       {
         addbox(document.getElementById('add_box').value)   
       }
-      var x = event.clientX-1;
-      var y = event.clientY-1;
+      var x = (event.clientX-5);
+      x=(x<0?0:(x><?php echo "$dimensao?$dimensao" ?>:x))
+      var y = (event.clientY-5);
+      y=(y<0?0:(y><?php echo "$h?$h" ?>:y))
       if( document.getElementById('ativa').value > 0){
         idx = document.getElementById('ativa').value
         if(document.getElementById('hbox_'+idx).value.split(" ").length - 1 == 3){
