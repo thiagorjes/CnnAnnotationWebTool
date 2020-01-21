@@ -73,6 +73,7 @@ else {
 
 $linhas = file("http://localhost/".$boxes);
 $linhas = array_unique($linhas);
+natsort($linhas);
 
 ?>
 <html>
