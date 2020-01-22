@@ -1,5 +1,5 @@
 <?php
-$dimensao=1000;
+$dimensao=1800;
 //lista de imagens
 include_once("lista.php");
 //lista de classes de interesses
