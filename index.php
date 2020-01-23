@@ -115,6 +115,8 @@ natsort($linhas);
         right:0px;
         top:0px;
         position:absolute;
+        height:100%;
+        overflow-y:scroll;
       }
       .clicavel{
         background: transparent; 
