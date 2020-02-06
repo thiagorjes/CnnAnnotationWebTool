@@ -1,5 +1,5 @@
 <?php
-$dimensao=1800;
+$dimensao=1700;
 //lista de imagens
 include_once("lista.php");
 //lista de classes de interesses
@@ -110,6 +110,7 @@ natsort($linhas);
       }
       body {
         margin:0px;
+        background-color: cadetblue;
       }
       .dados{
         right:0px;
