@@ -87,6 +87,7 @@ natsort($linhas);
         position: absolute;
         background: transparent;
         border: 1px solid black;
+        z-index:100;
       }
       .hlinha{
         height:0px;
@@ -96,6 +97,7 @@ natsort($linhas);
         position: absolute;
         background: transparent;
         border: 1px solid black;
+        z-index:100;
       }
       .eliminar {
         margin: 0px 0px;
@@ -133,6 +135,7 @@ natsort($linhas);
         border:1px solid black;
         width:<?php echo $dimensao;?>px;
         height:<?php echo $dimensao;?>px;
+        position: initial;
       }
       img {
         width: <?php echo "$w";?>px;
@@ -234,11 +237,13 @@ natsort($linhas);
           document.getElementById('idx').value=(document.getElementById('idx').value>1?parseInt(document.getElementById('idx').value)-1:0);
           document.getElementById('formulario').submit()
           break;
+        case 38:
+          document.getElementById('imagem').style['position']=(document.getElementById('imagem').style['position']=='relative'?'initial':'relative');
+          break;
         case 39:
           document.getElementById('idx').value=parseInt(document.getElementById('idx').value)+1;
           document.getElementById('formulario').submit()
           break;
-          
         case 46:
           var selecionado = document.querySelectorAll('.highlighted')
           selecionado.forEach((e)=>{
