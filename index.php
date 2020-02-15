@@ -144,10 +144,16 @@ natsort($linhas);
      <?php
       foreach($classes as $key=>$value){
         echo ".class_".$value[0]." {
-          border: 1px solid ".$value[1].";
+          border: 1px solid ".($value[1]=="blink"?"orange":$value[1]).";"
+          .($value[1]=="blink"?"animation: blinker 1s linear infinite;":'')."
         }";
       }
       ?>
+      @keyframes blinker {
+        50% {
+          opacity: 0;
+        }
+      }
       .highlighted {
         border:2px solid white !important;
       }
